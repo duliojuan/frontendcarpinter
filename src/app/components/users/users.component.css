@@ -1,0 +1,42 @@
+.tabla-estilizada {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1.2em;
+    width: 80%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+}
+
+.tabla-estilizada thead tr {
+    background-color: #981400;
+    color: #ffffff;
+    text-align: left;
+}
+
+.tabla-estilizada th, .tabla-estilizada td {
+    padding: 12px 15px;
+}
+
+.tabla-estilizada tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+/* Aplica un color de fondo diferente a las filas pares (2, 4, 6, etc.) 
+   dentro del cuerpo de la tabla para crear un efecto de rayado */
+   .tabla-estilizada tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3; /* Color gris claro */
+}
+
+/* Añade un borde inferior de 2 píxeles de grosor y color verde (#009879)
+   a la última fila del cuerpo de la tabla para darle un efecto visual de cierre */
+.tabla-estilizada tbody tr:last-of-type {
+    border-bottom: 2px solid #050098; /* Borde inferior verde */
+}
+
+/* Estiliza las filas que tienen la clase 'fila-activa' para destacarlas visualmente.
+   Aplica negrita al texto y cambia el color del texto a verde */
+.tabla-estilizada tbody tr.fila-activa {
+    font-weight: bold; /* Texto en negrita */
+    color: #819800;    /* Color del texto en verde */
+}
+

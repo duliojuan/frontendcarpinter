@@ -1,0 +1,55 @@
+<table class="tabla-estilizada">
+    <thead>
+        <tr>
+            <th>ID Película</th>
+            <th>Género</th>
+            <th>Título</th>
+            <th>Duración</th>
+            <th>Clasificación</th>
+            <th>Año</th>
+            <th>Sinopsis</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of arrayPeliculas">
+            <td>{{ item.id_pelicula }}</td>
+            <td>{{ item.genero }}</td>
+            <td>{{ item.titulo }}</td>
+            <td>{{ item.duracion }}</td>
+            <td>{{ item.clasificacion }}</td>
+            <td>{{ item.estreno }}</td>
+            <td>{{ item.sinopsis }}</td>
+            <td>
+                <button (click)="editarPelicula(item)">Editar</button>
+                <button (click)="eliminarPelicula(item.id_pelicula)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<form [formGroup]="nuevoPeliculaForm" (ngSubmit)="crearPelicula()">
+    <label for="id_pelicula">ID Película:</label>
+    <input id="id_pelicula" formControlName="id_pelicula" required [readonly]="peliculaEnEdicion">
+
+    <label for="genero">Género:</label>
+    <input id="genero" formControlName="genero" required>
+
+    <label for="titulo">Título:</label>
+    <input id="titulo" formControlName="titulo" required>
+
+    <label for="duracion">Duración:</label>
+    <input id="duracion" formControlName="duracion" required>
+
+    <label for="clasificacion">Clasificación:</label>
+    <input id="clasificacion" formControlName="clasificacion" required>
+
+    <label for="estreno">Año:</label>
+    <input id="estreno" formControlName="estreno" required>
+
+    <label for="sinopsis">Sinopsis:</label>
+    <textarea id="sinopsis" formControlName="sinopsis" required></textarea>
+
+    <button type="submit">{{ peliculaEnEdicion ? 'Actualizar Película' : 'Crear Película' }}</button>
+    <button type="button" *ngIf="peliculaEnEdicion" (click)="cancelarEdicion()">Cancelar</button>
+</form>

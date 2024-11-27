@@ -1,0 +1,61 @@
+
+.anuncio-bienvenida {
+    background-color: #c70c0c;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 40px 30px;
+    width: 80%;
+    max-width: 400px;
+    animation: entrada 1s ease;
+}
+
+.anuncio-bienvenida h1 {
+    font-size: 2em;
+    color: #988e00;
+    margin: 0;
+    font-weight: bold;
+    animation: brillo 2s ease infinite;
+}
+
+.anuncio-bienvenida p {
+    font-size: 1.1em;
+    color: #333;
+    margin-top: 10px;
+}
+
+.anuncio-bienvenida .boton {
+    background-color: #120098;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.anuncio-bienvenida .boton:hover {
+    background-color: #8a8f03;
+}
+
+@keyframes entrada {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes brillo {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(56, 231, 184, 0.5), 0 0 10px rgba(82, 240, 177, 0.7);
+    }
+    50% {
+        text-shadow: 0 0 5px rgba(56, 231, 184, 0.5), 0 0 10px rgba(82, 240, 177, 0.7);
+    }
+}
