@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms'; 
-import { UsuarioService } from '../../services/usuario.service'; // Cambiar al servicio de películas
+import { ContenidoService } from '../../services/contenido.service'; 
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -12,13 +12,12 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./contenido.component.css']
 })
 export class ContenidoComponent implements OnInit {
-  arrayPeliculas: any[] = []; // Cambiado a arrayPeliculas
+  arrayPeliculas: any[] = []; 
   nuevoPeliculaForm: FormGroup; 
-  peliculaEnEdicion: any = null; // Película en edición
+  peliculaEnEdicion: any = null; 
 
-  constructor(private peliculaService: UsuarioService, private fb: FormBuilder) {
+  constructor(private contenidoService: ContenidoService, private fb: FormBuilder) {
     this.nuevoPeliculaForm = this.fb.group({
-      id_pelicula: [''],
       genero: [''],
       titulo: [''],
       duracion: [''],
@@ -29,11 +28,11 @@ export class ContenidoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetch();
+    this.fetchPeliculas();
   }
 
-  fetch(): void {
-    this.peliculaService.fetchUser().subscribe(
+  fetchPeliculas(): void {
+    this.contenidoService.fetchPeliculas().subscribe(
       (result: any) => {
         this.arrayPeliculas = result;
       },
@@ -44,21 +43,16 @@ export class ContenidoComponent implements OnInit {
   }
 
   crearPelicula(): void {
-    if (this.peliculaEnEdicion) {
-      this.actualizarPelicula(); // Llama a actualizar si está en edición
-    } else {
-      const pelicula = this.nuevoPeliculaForm.value; 
-      this.peliculaService.postUser(pelicula).subscribe(
-        (result) => {
-          console.log('Película creada:', result);
-          this.arrayPeliculas.push(result); 
-          this.nuevoPeliculaForm.reset(); 
-        },
-        (error) => {
-          console.error('Error creando película:', error);
-        }
-      );
-    }
+    const pelicula = this.nuevoPeliculaForm.value; 
+    this.contenidoService.postPelicula(pelicula).subscribe(
+      (result) => {
+        this.arrayPeliculas.push(result); 
+        this.nuevoPeliculaForm.reset(); 
+      },
+      (error) => {
+        console.error('Error creando película:', error);
+      }
+    );
   }
 
   editarPelicula(pelicula: any): void {
@@ -68,9 +62,8 @@ export class ContenidoComponent implements OnInit {
 
   actualizarPelicula(): void {
     const peliculaActualizada = this.nuevoPeliculaForm.value;
-    this.peliculaService.updateUser(this.peliculaEnEdicion.id_pelicula, peliculaActualizada).subscribe(
+    this.contenidoService.updatePelicula(this.peliculaEnEdicion.id_pelicula, peliculaActualizada).subscribe(
       (result) => {
-        console.log('Película actualizada:', result);
         const index = this.arrayPeliculas.findIndex(p => p.id_pelicula === this.peliculaEnEdicion.id_pelicula);
         if (index !== -1) {
           this.arrayPeliculas[index] = result;
@@ -85,22 +78,13 @@ export class ContenidoComponent implements OnInit {
   }
 
   eliminarPelicula(id_pelicula: string): void {
-    console.log('Intentando eliminar película con ID:', id_pelicula); // Verificar que ID esté correcto
-    
-    this.peliculaService.deleteUser(id_pelicula).subscribe(
+    this.contenidoService.deletePelicula(id_pelicula).subscribe(
       () => {
-        console.log('Película eliminada:', id_pelicula);
-        // Filtrar el array para eliminar el elemento eliminado del frontend
         this.arrayPeliculas = this.arrayPeliculas.filter(p => p.id_pelicula !== id_pelicula);
       },
       (error) => {
         console.error('Error eliminando película:', error);
       }
     );
-  }
-  
-  cancelarEdicion(): void {
-    this.peliculaEnEdicion = null;
-    this.nuevoPeliculaForm.reset();
   }
 }
