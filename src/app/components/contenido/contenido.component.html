@@ -1,55 +1,47 @@
 <table class="tabla-estilizada">
     <thead>
         <tr>
-            <th>ID Película</th>
-            <th>Género</th>
-            <th>Título</th>
-            <th>Duración</th>
-            <th>Clasificación</th>
-            <th>Año</th>
-            <th>Sinopsis</th>
+            <th>ID Cliente</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+            <th>Estado</th>
             <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of arrayPeliculas">
-            <td>{{ item.id_pelicula }}</td>
-            <td>{{ item.genero }}</td>
-            <td>{{ item.titulo }}</td>
-            <td>{{ item.duracion }}</td>
-            <td>{{ item.clasificacion }}</td>
-            <td>{{ item.estreno }}</td>
-            <td>{{ item.sinopsis }}</td>
+        <tr *ngFor="let item of arrayClientes">
+            <td>{{ item.id_cliente }}</td>
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.apellido }}</td>
+            <td>{{ item.edad }}</td>
+            <td>{{ item.estado }}</td>
             <td>
-                <button (click)="editarPelicula(item)">Editar</button>
-                <button (click)="eliminarPelicula(item.id_pelicula)">Eliminar</button>
+                <button (click)="editarCliente(item)">Editar</button>
+                <button (click)="eliminarCliente(item.id_cliente)">Eliminar</button>
             </td>
         </tr>
     </tbody>
 </table>
 
-<form [formGroup]="nuevoPeliculaForm" (ngSubmit)="crearPelicula()">
-    <label for="id_pelicula">ID Película:</label>
-    <input id="id_pelicula" formControlName="id_pelicula" required [readonly]="peliculaEnEdicion">
+<form [formGroup]="nuevoClienteForm" (ngSubmit)="crearCliente()">
+    <label for="id_cliente">ID Cliente:</label>
+    <input id="id_cliente" formControlName="id_cliente" required [readonly]="clienteEnEdicion">
 
-    <label for="genero">Género:</label>
-    <input id="genero" formControlName="genero" required>
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" formControlName="nombre" required>
 
-    <label for="titulo">Título:</label>
-    <input id="titulo" formControlName="titulo" required>
+    <label for="apellido">Apellido:</label>
+    <input id="apellido" formControlName="apellido" required>
 
-    <label for="duracion">Duración:</label>
-    <input id="duracion" formControlName="duracion" required>
+    <label for="edad">Edad:</label>
+    <input id="edad" formControlName="edad" required>
 
-    <label for="clasificacion">Clasificación:</label>
-    <input id="clasificacion" formControlName="clasificacion" required>
+    <label for="estado">Estado:</label>
+    <input id="estado" formControlName="estado" required>
 
-    <label for="estreno">Año:</label>
-    <input id="estreno" formControlName="estreno" required>
+    
 
-    <label for="sinopsis">Sinopsis:</label>
-    <textarea id="sinopsis" formControlName="sinopsis" required></textarea>
-
-    <button type="submit">{{ peliculaEnEdicion ? 'Actualizar Película' : 'Crear Película' }}</button>
+    <button type="submit">{{ clienteEnEdicion ? 'Actualizar Cliente' : 'Crear Cliente' }}</button>
     
 </form>

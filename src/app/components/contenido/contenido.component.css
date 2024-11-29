@@ -1,89 +1,122 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    padding: 20px;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column; /* Para apilar el formulario y la tabla verticalmente */
+    gap: 20px; /* Espacio entre el formulario y la tabla */
 }
 
-.tabla-estilizada {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 1.2em;
-    width: 80%; /* Ajusta el ancho de la tabla */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    background-color: #fff;
-    border-radius: 10px; /* Añade esquinas redondeadas */
-    overflow: hidden; /* Asegura que las esquinas redondeadas se mantengan */
-}
-
-.tabla-estilizada thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-}
-
-.tabla-estilizada th, .tabla-estilizada td {
-    padding: 12px 15px;
-}
-
-.tabla-estilizada tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
-.tabla-estilizada tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3; /* Color gris claro */
-}
-
-.tabla-estilizada tbody tr:last-of-type {
-    border-bottom: 2px solid #009879; /* Borde inferior verde */
-}
-
-.tabla-estilizada tbody tr.fila-activa {
-    font-weight: bold; /* Texto en negrita */
-    color: #009879;    /* Color del texto en verde */
-}
-
-/* Formulario para que esté centrado junto a la tabla */
+/* Formulario centrado con bordes redondeados */
 form {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
+    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    margin-right: 20px; /* Espacio entre la tabla y el formulario */
-}
-
-form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-form input, form textarea {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    max-width: 500px; /* Limitar el ancho del formulario */
+}
+
+/* Estilo de etiquetas */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Estilo de los inputs */
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    transition: border 0.3s;
+    transition: border-color 0.3s;
 }
 
-form input:focus, form textarea:focus {
-    border: 1px solid #007bff;
+/* Enfoque en los inputs */
+input:focus {
+    border-color: hsl(58, 80%, 47%);
+    outline: none;
 }
 
-form button {
+/* Estilo de los botones */
+button {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 12px 20px;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%;
+    font-size: 16px;
     transition: background-color 0.3s;
 }
 
-form button:hover {
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Tabla centrada y estilizada */
+.table-estilizada, .tabla-estilizada {
+    width: 80%; /* Establece un ancho del 80% para la tabla */
+    max-width: 900px; /* El ancho máximo es de 900px */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    border-radius: 10px; /* Bordes redondeados para la tabla */
+    overflow: hidden; /* Asegura que no se salgan bordes o sombras */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+/* Estilo de celdas */
+.table-estilizada th, .table-estilizada td,
+.tabla-estilizada th, .tabla-estilizada td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Cabecera de la tabla */
+.table-estilizada th, .tabla-estilizada th {
+    background-color: hsl(188, 67%, 47%);
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/* Filas alternadas */
+.tabla-estilizada tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover en las filas */
+.table-estilizada tr:hover, .tabla-estilizada tr:hover {
+    background-color: #ddd;
+}
+
+/* Borde redondeado para la última fila */
+.table-estilizada tr:last-child td, .tabla-estilizada tr:last-child td {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Botones dentro de la tabla */
+.tabla-estilizada button, .table-estilizada button {
+    background-color: #620ce4;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.tabla-estilizada button:hover, .table-estilizada button:hover {
     background-color: #0056b3;
 }

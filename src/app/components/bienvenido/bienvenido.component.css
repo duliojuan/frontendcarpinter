@@ -1,6 +1,17 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f3f4f6, #e2e8f0);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Para que el cuerpo ocupe toda la altura de la pantalla */
+    color: white;
+}
 
 .anuncio-bienvenida {
-    background-color: #c70c0c;
+    background-color: #000; /* Fondo negro sólido */
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -12,7 +23,7 @@
 
 .anuncio-bienvenida h1 {
     font-size: 2em;
-    color: #988e00;
+    color: #fff; /* Letras blancas en negritas */
     margin: 0;
     font-weight: bold;
     animation: brillo 2s ease infinite;
@@ -20,13 +31,13 @@
 
 .anuncio-bienvenida p {
     font-size: 1.1em;
-    color: #333;
+    color: #fff; /* Letras blancas */
     margin-top: 10px;
 }
 
 .anuncio-bienvenida .boton {
-    background-color: #120098;
-    color: #fff;
+    background-color: #1c7cc5; /* Color de fondo del botón */
+    color: #fff; /* Letras blancas */
     padding: 12px 20px;
     border-radius: 25px;
     text-decoration: none;
@@ -37,7 +48,7 @@
 }
 
 .anuncio-bienvenida .boton:hover {
-    background-color: #8a8f03;
+    background-color: #988e00; /* Color de fondo al pasar el ratón */
 }
 
 @keyframes entrada {
@@ -53,9 +64,9 @@
 
 @keyframes brillo {
     0%, 100% {
-        text-shadow: 0 0 5px rgba(56, 231, 184, 0.5), 0 0 10px rgba(82, 240, 177, 0.7);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.7);
     }
     50% {
-        text-shadow: 0 0 5px rgba(56, 231, 184, 0.5), 0 0 10px rgba(82, 240, 177, 0.7);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.7);
     }
 }

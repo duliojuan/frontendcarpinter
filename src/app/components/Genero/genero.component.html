@@ -1,19 +1,19 @@
 <form [formGroup]="nuevoGeneroForm" (ngSubmit)="crearGenero()"> 
-    <label for="id_genero">ID_Género:</label>
+    <label for="id_genero">ID_Producto:</label>
     <input id="id_genero" formControlName="id_genero" required [readonly]="generoEnEdicion">
 
-    <label for="nombre">Género:</label>
+    <label for="nombre">Nombre:</label>
     <input id="nombre" formControlName="nombre" required>
 
-    <button type="submit">{{ generoEnEdicion ? 'Actualizar Género' : 'Crear Género' }}</button>
+    <button type="submit">{{ generoEnEdicion ? 'Actualizar Género' : 'Crear Registro' }}</button>
     <button type="button" *ngIf="generoEnEdicion" (click)="cancelarEdicion()">Cancelar</button>
 </form>
 
 <table class="tabla-estilizada">
     <thead>
         <tr>
-            <th>ID Género</th>
-            <th>Género</th>
+            <th>ID Producto</th>
+            <th>Nombre</th>
             <th>Acciones</th>
         </tr>
     </thead>

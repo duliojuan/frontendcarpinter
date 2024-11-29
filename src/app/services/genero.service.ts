@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GeneroService {
-  private apiURL = 'https://backendjulian.onrender.com/api/genero';
+  private apiURL = 'https://ferreteriabackend-8u9v.onrender.com/api/genero';
 
   constructor(private http: HttpClient) { }
 

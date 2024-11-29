@@ -12,42 +12,41 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./contenido.component.css']
 })
 export class ContenidoComponent implements OnInit {
-  arrayPeliculas: any[] = []; 
-  nuevoPeliculaForm: FormGroup; 
-  peliculaEnEdicion: any = null; 
+  arrayClientes: any[] = []; 
+  nuevoClienteForm: FormGroup; 
+  clienteEnEdicion: any = null; 
 
   constructor(private contenidoService: ContenidoService, private fb: FormBuilder) {
-    this.nuevoPeliculaForm = this.fb.group({
-      genero: [''],
-      titulo: [''],
+    this.nuevoClienteForm = this.fb.group({
+      nombre: [''],
+      apellido: [''],
       duracion: [''],
-      clasificacion: [''],
-      estreno: [''],
-      sinopsis: ['']
+      edad: [''],
+      estado: ['']
     });
   }
 
   ngOnInit(): void {
-    this.fetchPeliculas();
+    this.fetchClientes();
   }
 
-  fetchPeliculas(): void {
-    this.contenidoService.fetchPeliculas().subscribe(
+  fetchClientes(): void {
+    this.contenidoService.fetchClientes().subscribe(
       (result: any) => {
-        this.arrayPeliculas = result;
+        this.arrayClientes = result;
       },
       (error) => {
-        console.error('Error fetching peliculas:', error);
+        console.error('Error fetching clientes:', error);
       }
     );
   }
 
-  crearPelicula(): void {
-    const pelicula = this.nuevoPeliculaForm.value; 
-    this.contenidoService.postPelicula(pelicula).subscribe(
+  crearCliente(): void {
+    const cliente = this.nuevoClienteForm.value; 
+    this.contenidoService.postCliente(cliente).subscribe(
       (result) => {
-        this.arrayPeliculas.push(result); 
-        this.nuevoPeliculaForm.reset(); 
+        this.arrayClientes.push(result); 
+        this.nuevoClienteForm.reset(); 
       },
       (error) => {
         console.error('Error creando película:', error);
@@ -55,21 +54,21 @@ export class ContenidoComponent implements OnInit {
     );
   }
 
-  editarPelicula(pelicula: any): void {
-    this.peliculaEnEdicion = pelicula;
-    this.nuevoPeliculaForm.patchValue(pelicula);
+  editarCliente(cliente: any): void {
+    this.clienteEnEdicion = cliente;
+    this.nuevoClienteForm.patchValue(cliente);
   }
 
-  actualizarPelicula(): void {
-    const peliculaActualizada = this.nuevoPeliculaForm.value;
-    this.contenidoService.updatePelicula(this.peliculaEnEdicion.id_pelicula, peliculaActualizada).subscribe(
+  actualizarCliente(): void {
+    const clienteActualizada = this.nuevoClienteForm.value;
+    this.contenidoService.updateCliente(this.clienteEnEdicion.id_cliente, clienteActualizada).subscribe(
       (result) => {
-        const index = this.arrayPeliculas.findIndex(p => p.id_pelicula === this.peliculaEnEdicion.id_pelicula);
+        const index = this.arrayClientes.findIndex(p => p.id_cliente === this.clienteEnEdicion.id_cliente);
         if (index !== -1) {
-          this.arrayPeliculas[index] = result;
+          this.arrayClientes[index] = result;
         }
-        this.peliculaEnEdicion = null;
-        this.nuevoPeliculaForm.reset();
+        this.clienteEnEdicion = null;
+        this.nuevoClienteForm.reset();
       },
       (error) => {
         console.error('Error actualizando película:', error);
@@ -77,10 +76,10 @@ export class ContenidoComponent implements OnInit {
     );
   }
 
-  eliminarPelicula(id_pelicula: string): void {
-    this.contenidoService.deletePelicula(id_pelicula).subscribe(
+  eliminarCliente(id_cliente: string): void {
+    this.contenidoService.deleteCliente(id_cliente).subscribe(
       () => {
-        this.arrayPeliculas = this.arrayPeliculas.filter(p => p.id_pelicula !== id_pelicula);
+        this.arrayClientes = this.arrayClientes.filter(p => p.id_cliente !== id_cliente);
       },
       (error) => {
         console.error('Error eliminando película:', error);

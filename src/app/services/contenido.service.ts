@@ -6,31 +6,31 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ContenidoService {
-  private apiUrl = 'https://backendjulian.onrender.com/api/peliculas';
+  private apiUrl = 'https://ferreteriabackend-8u9v.onrender.com/api/clientes';
 
   constructor(private http: HttpClient) { }
-  // Obtener todas las películas
-  fetchPeliculas(): Observable<any[]> {
+  // Obtener todos los clientes
+  fetchClientes(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
 
   // Obtener una película por ID
-  fetchPeliculaById(id: string): Observable<any> {
+  fetchClienteById(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
   // Crear una nueva película
-  postPelicula(pelicula: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, pelicula);
+  postCliente(cliente: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, cliente);
   }
 
   // Actualizar una película
-  updatePelicula(id_pelicula: string, pelicula: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id_pelicula}`, pelicula);
+  updateCliente(id_cliente: string, cliente: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id_cliente}`, cliente);
   }
 
   // Eliminar una película
-  deletePelicula(id_pelicula: string): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${id_pelicula}`);
+  deleteCliente(id_cliente: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${id_cliente}`);
   }
 }

@@ -4,13 +4,19 @@ body {
     color: #333;
     margin: 0;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 form {
     background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
     margin-bottom: 20px;
 }
 
@@ -22,15 +28,15 @@ label {
 
 input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 12px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
     transition: border-color 0.3s;
 }
 
 input:focus {
-    border-color: #007bff;
+    border-color: hsl(133, 100%, 50%);
     outline: none;
 }
 
@@ -38,7 +44,7 @@ button {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
@@ -49,64 +55,62 @@ button:hover {
     background-color: #0056b3;
 }
 
-.table-estilizada {
-    width: 100%;
-    border-collapse: collapse;
+/* Tabla estilizada con bordes curveados y un ancho limitado */
+.table-estilizada, .tabla-estilizada {
+    width: 80%; /* Establece un ancho del 80% para la tabla */
+    max-width: 900px; /* El ancho máximo es de 900px */
     margin-top: 20px;
-}
-
-.table-estilizada th,
-.table-estilizada td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.table-estilizada th {
-    background-color: #007bff;
-    color: white;
-}
-
-.table-estilizada tr:hover {
-    background-color: #f1f1f1;
-}
-
-.tabla-estilizada {
-    width: 100%;
+    margin-bottom: 20px;
     border-collapse: collapse;
+    border-radius: 10px; /* Bordes redondeados para la tabla */
+    overflow: hidden; /* Asegura que no se salgan bordes o sombras */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Celdas de la tabla */
+.table-estilizada th, .table-estilizada td,
 .tabla-estilizada th, .tabla-estilizada td {
-    padding: 12px;
+    padding: 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-.tabla-estilizada th {
-    background-color: #4CAF50;
+/* Cabecera de la tabla */
+.table-estilizada th, .tabla-estilizada th {
+    background-color: hsl(188, 67%, 47%);
     color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
+/* Filas alternadas de la tabla */
 .tabla-estilizada tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-.tabla-estilizada tr:hover {
+/* Filas al pasar el cursor */
+.table-estilizada tr:hover, .tabla-estilizada tr:hover {
     background-color: #ddd;
 }
 
-.tabla-estilizada button {
-    background-color: #007BFF;
+/* Borde redondeado para la última fila */
+.table-estilizada tr:last-child td, .tabla-estilizada tr:last-child td {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Botones en las tablas */
+.tabla-estilizada button, .table-estilizada button {
+    background-color: #620ce4;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 10px 15px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 5px;
     transition: background-color 0.3s;
 }
 
-.tabla-estilizada button:hover {
+.tabla-estilizada button:hover, .table-estilizada button:hover {
     background-color: #0056b3;
 }
